@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http:// thymeleaf.org">
+
+<head>
+<title>Join Chat</title>
+<script type="text/javascript" src="js/welcome.js"></script>
+
+</head>
+<body style="background-color: olive;">
+<h1 style="background-color: olive;  text-align: center;">Join Channel Below</h1>
+
+ 	<div align="center" style=" background-color: olive; padding: 30px 50px 50px 50px;">
+
+			<form  action="/createChannel" method="post">
+				<div >
+					<input style="width:160px;height:40px;" type="submit" value="Create a new channel" /> 
+					<input style="width:180px;height:35px; text-align: center;" id="channel" required oninvalid="this.setCustomValidity('Channel name cannot be empty.')" onchange="this.setCustomValidity('')" name="channel"  type="text" th:field="${channel.name}" placeholder="Channel Name">
+	
+				</div>
+			</form>
+	</div> 
+
+
+ 	<div class="column" style="background-color: #aaa;">
+		<div style="text-align: center; background-color: olive;" th:each="channel : ${channels}" >		 
+			 <a th:href = "@{/channels/{channelId}(channelId=${channel.channelId})}"><button th:text="${channel.name}" style="width:380px; height:50px; padding: 15px 20px 30px 20px; font-size : 20px;"></button></a>
+		</div>
+	</div> 
+
+</body>
+</html>
+			
