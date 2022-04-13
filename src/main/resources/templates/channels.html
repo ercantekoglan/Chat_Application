@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http:// thymeleaf.org">
+<head>
+<title>[[${channel.name}]]</title>
+<style>
+* {
+	box-sizing: border-box;
+}
+
+/* Create two unequal columns that floats next to each other */
+.column {
+	float: left;
+	padding: 10px;
+	height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+	width: 75%;
+}
+
+.right {
+	width: 25%;
+}
+
+.row {
+	margin: 50px 350px 50px 350px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+</style>
+</head>
+
+<body style="background-color: olive;">
+
+
+
+	<div class="row" style="background-color: olive;">
+		<div class="column left" style="background-color: olive;">
+
+			<span id="commentSection"> </span>
+			<hr />
+			<textarea id="comment" rows="3" cols="109" style="resize: none"
+				placeholder="Start chat!!!"></textarea>
+
+		</div>
+
+		<div class="column right" style="background-color: olive;">
+			<h3 style="background-color: olive; text-align: center;">Active	User List</h3>
+			<div style="text-align: center; background-color: olive;" th:each="user : ${users}">
+				<p th:text="${user.username}" ></p>
+			</div>
+
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="/js/channels.js"></script>
+</body>
+</html>
